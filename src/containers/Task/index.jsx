@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -7,12 +7,13 @@ import {
   removeTask,
   completeTask,
   editTask,
-} from '../../actions/actionCreator'
-import { TaskList } from '../../components/TaskList/TaskList'
-import { TaskInput } from '../../components/TaskInput/TaskInput'
-import { NoTaskTitle } from './index'
+} from 'store/actions/actionCreator'
+import { TaskList } from 'components/TaskList'
+import { TaskInput } from 'components/TaskInput'
 
-class Task extends Component {
+import { NoTaskTitle } from './styled'
+
+class Task extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -43,7 +44,8 @@ class Task extends Component {
 
   render() {
     const { taskText } = this.state
-    const { tasks, removeTask, completeTask, editTask } = this.props
+    const { tasks, removeTask, completeTask, editTask } =
+      this.props
     const isTasks = tasks && tasks.length > 0
 
     return (
@@ -68,9 +70,15 @@ class Task extends Component {
   }
 }
 
-export default connect(
-  ({ tasks }) => ({
+const mapStateToProps = ({ tasks }) => {
+  return {
     tasks,
-  }),
-  { addTask, removeTask, completeTask, editTask },
-)(Task)
+  }
+}
+
+export default connect(mapStateToProps, {
+  addTask,
+  removeTask,
+  completeTask,
+  editTask,
+})(Task)

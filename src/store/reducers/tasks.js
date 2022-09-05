@@ -3,7 +3,7 @@ import {
   EDIT_TASK,
   REMOVE_TASK,
   TOGGLE_TASK,
-} from '../constants'
+} from 'constants'
 
 const initialState = {
   tasks: [],

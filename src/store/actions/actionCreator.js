@@ -3,7 +3,7 @@ import {
   EDIT_TASK,
   REMOVE_TASK,
   TOGGLE_TASK,
-} from '../constants/index'
+} from '../../constants/index'
 
 export const addTask = (id, text, isCompleted) => ({
   type: ADD_TASK,

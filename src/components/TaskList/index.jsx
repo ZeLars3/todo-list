@@ -1,31 +1,31 @@
-import { Component } from 'react'
-import PropTypes from 'prop-types';
+import { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 import { TaskItem } from '../TaskItem'
-import { TasksTitle, TasksContainer } from './components'
+import { TasksTitle, TasksContainer } from './styled'
 
-export class TaskList extends Component {
+export class TaskList extends PureComponent {
   constructor(props) {
     super(props)
   }
 
   render() {
+    const { tasks, completeTask, removeTask } = this.props
+    
     return (
       <>
         <TasksTitle>Your Tasks</TasksTitle>
         <TasksContainer>
-          {this.props.tasks.map(
-            ({ id, text, isCompleted }) => (
-              <TaskItem
-                completeTask={this.props.completeTask}
-                removeTask={this.props.removeTask}
-                id={id}
-                key={id}
-                text={text}
-                isCompleted={isCompleted}
-              />
-            ),
-          )}
+          {tasks.map(({ id, text, isCompleted }) => (
+            <TaskItem
+              completeTask={completeTask}
+              removeTask={removeTask}
+              id={id}
+              key={id}
+              text={text}
+              isCompleted={isCompleted}
+            />
+          ))}
         </TasksContainer>
       </>
     )
@@ -49,4 +49,3 @@ TaskList.defaultProps = {
   removeTask: () => {},
   completeTask: () => {},
 }
-

@@ -1,8 +1,8 @@
 import { Component } from 'react'
 
-import { Navbar } from './components/Navbar'
-import Task from './containers/Task/Task'
-import { ErrorBoundary } from './errors'
+import { Navbar } from 'components/Navbar'
+import Task from 'containers/Task'
+import { ErrorBoundary } from 'components/ErrorBoundary'
 
 export class App extends Component {
   render() {

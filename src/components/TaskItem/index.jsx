@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -6,28 +6,32 @@ import {
   StyledIconRemove,
   StyledIconUpate,
   ButtonContainer,
-} from './index'
+} from './styled'
 
-export class TaskItem extends Component {
+export class TaskItem extends PureComponent {
   constructor(props) {
     super(props)
   }
 
   render() {
+    const {
+      isCompleted,
+      completeTask,
+      id,
+      removeTask,
+      text,
+    } = this.props
+
     return (
-      <Task isCompleted={this.props.isCompleted}>
-        {this.props.text}
+      <Task isCompleted={isCompleted}>
+        {text}
         <ButtonContainer>
           <StyledIconUpate
-            isCompleted={this.props.isCompleted}
-            onClick={() =>
-              this.props.completeTask(this.props.id)
-            }
+            isCompleted={isCompleted}
+            onClick={() => completeTask(id)}
           />
           <StyledIconRemove
-            onClick={() =>
-              this.props.removeTask(this.props.id)
-            }
+            onClick={() => removeTask(id)}
           />
         </ButtonContainer>
       </Task>

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Header = styled.header`
+export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,10 +9,8 @@ const Header = styled.header`
   border-bottom: 3px solid #e9ecef;
 `
 
-const Title = styled.h1`
-  font-size: 1.5rem;
+export const Title = styled.h1`
   margin: 0;
+  font-size: 1.5rem;
   color: #fff;
 `
-
-export { Header, Title }

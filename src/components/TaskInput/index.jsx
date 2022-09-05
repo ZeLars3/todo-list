@@ -1,25 +1,25 @@
-import { Component } from 'react'
+import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import { Input, AddButton, Container } from './components'
+import { Input, AddButton, Container } from './styled'
 
-export class TaskInput extends Component {
+export class TaskInput extends PureComponent {
   constructor(props) {
     super(props)
   }
 
   render() {
+    const { value, onChange, onAdd } = this.props
+
     return (
       <Container>
         <Input
           type="text"
           placeholder="Add a task"
-          value={this.props.value}
-          onChange={this.props.onChange}
+          value={value}
+          onChange={onChange}
         />
-        <AddButton onClick={this.props.onAdd}>
-          Add
-        </AddButton>
+        <AddButton onClick={onAdd}>Add</AddButton>
       </Container>
     )
   }
