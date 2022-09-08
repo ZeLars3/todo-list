@@ -1,3 +1,4 @@
+import { Form } from 'formik'
 import styled from 'styled-components'
 
 export const Input = styled.input`
@@ -14,6 +15,11 @@ export const Input = styled.input`
   &:focus {
     outline: none;
   }
+`
+
+export const FormWrapper = styled(Form)`
+  margin: 0 auto;
+  display: contents;
 `
 
 export const AddButton = styled.button`

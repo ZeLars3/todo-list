@@ -1,30 +1,34 @@
 import PropTypes from 'prop-types'
-import { useFormik } from 'formik'
+import { useFormik, Formik } from 'formik'
 
-import { Input, AddButton, Container } from './styled'
+import {
+  Input,
+  AddButton,
+  Container,
+  FormWrapper,
+} from './styled'
 
 export const TaskInput = ({ value, onChange, onAdd }) => {
   const formik = useFormik({
     initialValues: {
       text: value,
     },
-    onSubmit: values => {
-      onAdd
-    },
-  });
+  })
 
   return (
     <Container>
-      <form onSubmit={formik.handleSubmit}>
-        <Input
-          id="task"
-          type="text"
-          placeholder="Add a task"
-          value={formik.values.text}
-          onChange={onChange}
-        />
-        <AddButton type="submit">Add</AddButton>
-      </form>
+      <Formik>
+        <FormWrapper onSubmit={onAdd}>
+          <Input
+            id="task"
+            type="text"
+            placeholder="Add a task"
+            value={formik.text}
+            onChange={onChange}
+          />
+          <AddButton type="submit">Add</AddButton>
+        </FormWrapper>
+      </Formik>
     </Container>
   )
 }
