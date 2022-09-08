@@ -1,41 +1,29 @@
-import {
-  ADD_TASK,
-  EDIT_TASK,
-  REMOVE_TASK,
-  TOGGLE_TASK,
-} from 'constants'
+import { TYPES } from 'store/boilerplates/types'
 
 const initialState = {
   tasks: [],
 }
 
-const tasks = (
-  state = initialState.tasks,
-  { id, text, isCompleted, type },
-) => {
-  switch (type) {
-    case ADD_TASK:
+const tasks = (state = initialState.tasks, action) => {
+  switch (action.type) {
+    case TYPES.ADD_TASK:
       return [
         ...state,
-        {
-          id,
-          text,
-          isCompleted,
-        },
+        action.payload,
       ]
-    case REMOVE_TASK:
-      return [...state].filter(task => task.id !== id)
-    case TOGGLE_TASK:
+    case TYPES.REMOVE_TASK:
+      return [...state].filter(task => task.id !== action.payload.id)
+    case TYPES.TOGGLE_TASK:
       return [...state].map(task => {
-        if (task.id === id) {
+        if (task.id === action.payload.id) {
           task.isCompleted = !task.isCompleted
         }
         return task
       })
-    case EDIT_TASK:
+    case TYPES.EDIT_TASK:
       return [...state].map(task => {
-        if (task.id === id) {
-          task.text = text
+        if (task.id === action.payload.id) {
+          task.text = action.payload.text
         }
         return task
       })

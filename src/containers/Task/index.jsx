@@ -31,15 +31,13 @@ class Task extends PureComponent {
   handleAddTask = () => {
     const { taskText } = this.state
 
-    if (taskText.length > 3) {
-      const { addTask } = this.props
+    const { addTask } = this.props
 
-      addTask(uuidv4(), taskText, false)
+    addTask(uuidv4(), taskText, false)
 
-      this.setState({
-        taskText: '',
-      })
-    }
+    this.setState({
+      taskText: '',
+    })
   }
 
   render() {

@@ -1,30 +1,32 @@
-import {
-  ADD_TASK,
-  EDIT_TASK,
-  REMOVE_TASK,
-  TOGGLE_TASK,
-} from '../../constants/index'
+import { TYPES } from 'store/boilerplates/types'
 
 export const addTask = (id, text, isCompleted) => ({
-  type: ADD_TASK,
-  id,
-  text,
-  isCompleted,
+  type: TYPES.ADD_TASK,
+  payload: {
+    text,
+    id,
+    isCompleted,
+  },
 })
 
 export const removeTask = id => ({
-  type: REMOVE_TASK,
-  id,
+  type: TYPES.REMOVE_TASK,
+  payload: {
+    id,
+  },
 })
 
 export const completeTask = id => ({
-  type: TOGGLE_TASK,
-  id,
+  type: TYPES.TOGGLE_TASK,
+  payload: {
+    id,
+  },
 })
 
 export const editTask = (id, text) => ({
-  type: EDIT_TASK,
-  id,
-  text,
+  type: TYPES.EDIT_TASK,
+  payload: {
+    id,
+    text,
+  },
 })
-

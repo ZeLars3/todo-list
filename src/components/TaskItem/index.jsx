@@ -28,10 +28,10 @@ export class TaskItem extends PureComponent {
         <ButtonContainer>
           <StyledIconUpate
             isCompleted={isCompleted}
-            onClick={() => completeTask(id)}
+            onClick={completeTask.bind(null, id)}
           />
           <StyledIconRemove
-            onClick={() => removeTask(id)}
+            onClick={removeTask.bind(null, id)}
           />
         </ButtonContainer>
       </Task>

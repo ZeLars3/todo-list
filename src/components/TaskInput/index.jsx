@@ -1,28 +1,32 @@
-import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { useFormik } from 'formik'
 
 import { Input, AddButton, Container } from './styled'
 
-export class TaskInput extends PureComponent {
-  constructor(props) {
-    super(props)
-  }
+export const TaskInput = ({ value, onChange, onAdd }) => {
+  const formik = useFormik({
+    initialValues: {
+      text: value,
+    },
+    onSubmit: values => {
+      onAdd
+    },
+  });
 
-  render() {
-    const { value, onChange, onAdd } = this.props
-
-    return (
-      <Container>
+  return (
+    <Container>
+      <form onSubmit={formik.handleSubmit}>
         <Input
+          id="task"
           type="text"
           placeholder="Add a task"
-          value={value}
+          value={formik.values.text}
           onChange={onChange}
         />
-        <AddButton onClick={onAdd}>Add</AddButton>
-      </Container>
-    )
-  }
+        <AddButton type="submit">Add</AddButton>
+      </form>
+    </Container>
+  )
 }
 
 TaskInput.propTypes = {
