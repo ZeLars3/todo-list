@@ -23,11 +23,11 @@ export class TaskItem extends PureComponent {
     } = this.props
 
     return (
-      <Task isCompleted={isCompleted}>
+      <Task $isCompleted={isCompleted}>
         {text}
         <ButtonContainer>
           <StyledIconUpate
-            isCompleted={isCompleted}
+            $isCompleted={isCompleted}
             onClick={completeTask.bind(null, id)}
           />
           <StyledIconRemove

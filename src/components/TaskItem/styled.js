@@ -14,9 +14,9 @@ export const Task = styled.div`
   color: #212529;
   border-bottom: 1px solid #212529;
   background-color: ${props =>
-    props.isCompleted ? 'Lightgray' : '#fff'};
+    props.$isCompleted ? 'Lightgray' : '#fff'};
   text-decoration: ${props =>
-    props.isCompleted ? 'line-through' : 'none'};
+    props.$isCompleted ? 'line-through' : 'none'};
 
   &:hover {
     background-color: Seashell;
@@ -34,7 +34,7 @@ export const StyledIconUpate = styled(BsCheckCircle)`
   transition: all 0.4s ease-in-out;
   font-size: 1.5rem;
   color: ${props =>
-    props.isCompleted ? 'green' : '#212529'};
+    props.$isCompleted ? 'green' : '#212529'};
 
   &:hover {
     transform: scale(1.05);

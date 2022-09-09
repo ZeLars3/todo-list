@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { useRef } from 'react'
 import { useFormik, Formik } from 'formik'
 
 import {
@@ -9,17 +10,24 @@ import {
 } from './styled'
 
 export const TaskInput = ({ value, onChange, onAdd }) => {
+  const inputRef = useRef(null)
   const formik = useFormik({
     initialValues: {
       text: value,
     },
   })
 
+  const onSubmit = () => {
+    onAdd(),
+    inputRef.current.value = ''
+  }
+
   return (
     <Container>
       <Formik>
-        <FormWrapper onSubmit={onAdd}>
+        <FormWrapper onSubmit={onSubmit}>
           <Input
+            ref={inputRef}
             id="task"
             type="text"
             placeholder="Add a task"
